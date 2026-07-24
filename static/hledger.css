@@ -1,0 +1,720 @@
+/* hledger web ui styles */
+
+/*------------------------------------------------------------------------------------------*/
+/* 0. revert some things */
+
+/* don't let bootstrap add link URLs when printing */
+@media print {
+  a[href]:after { content: none !important; }
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 1. colours */
+
+/* green */
+::placeholder {
+  font-style:italic;
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 2. fonts */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 4. autocomplete styles */
+
+.autocomplete-items {
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  overflow:auto;
+  max-height:300px;
+}
+
+.autocomplete-items div {
+  padding: 3px 20px;
+  font-size: 18px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.autocomplete-items div:hover {
+  color: #fff;
+  background-color: #0097cf;
+}
+
+code {
+  font-weight: bold;
+  color: black;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#message {
+    white-space: pre;
+    overflow-x: auto;
+    z-index: 100;
+}
+
+#sidebar-menu {
+    max-height: calc(100vh - 5.5em);
+    overflow-x:hidden;
+    overflow-y:auto;
+    border-right: 1px solid #ebebeb;
+    padding: 0;
+    margin: 0;
+}
+
+/* Override for resizable sidebar layout */
+.page-container #sidebar-menu {
+    max-height: 100vh;
+}
+
+.page-container > #sidebar-menu {
+    flex: 0 0 auto;
+    align-self: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-right: 1px solid #ebebeb;
+    margin-top: 3rem;
+}
+#sidebar-menu .main-menu {
+    table-layout: fixed;
+    word-wrap: break-word;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+#sidebar-menu .main-menu td {
+    padding: 0;
+    overflow: visible;
+    white-space:nowrap;
+    font-size: 16px;
+    vertical-align: top;
+}
+
+#sidebar-menu .main-menu .ff-wrapper { /* This wrapper is needed because firefox won't apply overflow to a td-tag */
+    overflow:visible;
+}
+
+#sidebar-menu .main-menu .top {
+    border: none !important;
+}
+
+#sidebar-menu .main-menu a {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    color: #2F2F2F;
+    padding: 0.25rem 0.5rem;
+    text-decoration: none;
+    width: fit-content;
+}
+
+#sidebar-menu .main-menu a:hover {
+    color: #11427D;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+#sidebar-menu .main-menu .only {
+    visibility: hidden;
+    padding: 1px;
+}
+
+#sidebar-menu .main-menu tr:hover .only {
+    visibility: visible;
+}
+
+
+
+#sidebar-menu .main-menu .amount {
+    float: right;
+    overflow-x:auto;
+    font-weight: 500 !important;
+}
+
+#sidebar-menu .main-menu .acct {
+    width:60%;
+    vertical-align:bottom;
+}
+
+#sidebar-menu .main-menu tr.hide {
+    display: none !important;
+}
+
+#sidebar-menu .main-menu tr {
+    border-bottom: 1px solid #ebebeb;
+}
+
+/* Prevent body scroll to allow independent column scrolling */
+body, html {
+    height: 100%;
+    overflow: hidden;
+    background-color: white;
+}
+
+.row {
+    overflow: visible;
+}
+
+.container-fluid {
+    overflow: visible;
+}
+
+#top-left-controls {
+    position: fixed;
+    top: 0;
+    left: 10px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem;
+    height: 3rem;
+    max-width: 17rem;
+}
+
+#topbar h1 {
+    margin-left: 30px;
+}
+
+body.sidebar-hidden #topbar h1 {
+    margin-left: 60px;
+}
+
+/* Sticky header inside scrollable main content */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: #e0e0e0;
+    padding: 0.3rem;
+    /* z-index: 50; */
+}
+
+.header-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+}
+
+.sticky-header h1 {
+    margin: 0 0 0.3rem 0;
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+body.sidebar-hidden .sticky-header h1 {
+    margin-left: 2.6rem;
+}
+
+.sticky-header h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.sticky-header h1 a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+.sticky-header #searchform {
+    margin: 0;
+    align-items: center;
+}
+
+.sticky-header .input-group {
+    height: 2.5rem;
+    align-items: center;
+    display: flex;
+}
+
+.sticky-header .form-control {
+    height: 2.5rem;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.9rem;
+}
+
+
+
+.home-btn {
+    margin-right: 1vw;
+    height: 2.5rem;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 0.3rem;
+    left: 0.3rem;
+    transform: scale(1.5);
+    z-index: 30;
+}
+
+#top-left-controls .empty-account-checkbox {
+    position: relative;
+    left: 13px;
+    top: 8px;
+    transform: scale(2);
+    z-index: 10;
+}
+
+#top-left-controls label[for="hideEmptyAccountsDesktop"] {
+    position: relative;
+    top: 8px;
+    left: 15px;
+    z-index: 20;
+}
+
+#sidebar-menu .empty-account-checkbox-mobile {
+    display: none;
+    position: relative;
+    top: 13px;
+    left: 1rem;
+    transform: scale(1.8);
+    z-index: 20;
+}
+
+#sidebar-menu label[for="hideEmptyAccountsMobile"] {
+    display: none;
+    position: relative;
+    left: 3rem;
+    bottom: 2px;
+    z-index: 20;
+}
+
+#top-left-controls .close-sidebar-arrow-desktop {
+    transform: scale(2);
+    display: none;
+}
+
+#top-left-controls .open-sidebar-arrow {
+    position: relative;
+    transform: scale(2);
+    display: none;
+    left: 0.7rem;
+}
+
+/* Sidebar arrow visibility states */
+body.sidebar-open #top-left-controls .close-sidebar-arrow-desktop {
+    display: block;
+}
+
+body.sidebar-open #top-left-controls .open-sidebar-arrow {
+    display: none;
+}
+
+body.sidebar-hidden #top-left-controls .close-sidebar-arrow-desktop {
+    display: none;
+}
+
+body.sidebar-hidden #top-left-controls .open-sidebar-arrow {
+    display: block;
+    position: relative;
+    z-index: 100;
+}
+
+#searchform button[onclick="addformShow()"],
+#searchform a[title="Clear search terms"],
+#searchform a[href="@{ManageR}"],
+#searchform button[data-bs-target="#helpmodal"] {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+#searchform button[onclick="addformShow()"] .bi,
+#searchform a[title="Clear search terms"] .bi,
+#searchform button[data-bs-target="#helpmodal"] .bi,
+#searchform .home-btn .bi {
+    transform: scale(1.5);
+    vertical-align: unset !important;
+    display: inline-flex;
+}
+
+#searchform .input-group-prepend {
+    display: flex;
+    align-items: center;
+}
+
+#searchform .input-group-append {
+    display: flex;
+    align-items: center;
+}
+
+#searchform input.form-control {
+    height: 2.5rem;
+}
+
+#addmodal .btn-close {
+    margin-left: 47rem;
+}
+
+.modal-title {
+    margin-left: 10rem;
+}
+
+#addmodal .modal-title {
+    margin-top: -1.15rem;
+    margin-left: 0;
+}
+
+#addmodal .modal-body {
+    padding: 1.5rem;
+}
+
+#addmodal .form-group {
+    margin-bottom: 1rem;
+}
+
+#addmodal .account-group {
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+}
+
+
+
+.close-sidebar-arrow-mobile {
+    display: none;
+    position: fixed;
+    top: 0.6rem;
+    right: 1vw;
+    transform: scale(2);
+    z-index: 30;
+}
+
+/* Hide desktop checkbox when sidebar is hidden */
+body.sidebar-hidden #top-left-controls .empty-account-checkbox,
+body.sidebar-hidden #top-left-controls label[for="hideEmptyAccountsDesktop"] {
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    body.sidebar-open #top-left-controls .close-sidebar-arrow-desktop {
+        display: none;
+    }
+
+    body.sidebar-hidden #top-left-controls .close-sidebar-arrow-desktop {
+        display: none;
+    }
+
+    body.sidebar-open #top-left-controls .open-sidebar-arrow {
+        display: none;
+    }
+
+    body.sidebar-hidden #top-left-controls .open-sidebar-arrow {
+        display: none;
+    }
+
+    /* Hide desktop checkbox on mobile */
+    #top-left-controls .empty-account-checkbox,
+    #top-left-controls label[for="hideEmptyAccountsDesktop"] {
+        display: none;
+    }
+
+    /* Hide desktop sidebar arrows on mobile */
+    body.sidebar-open #top-left-controls .close-sidebar-arrow-desktop,
+    body.sidebar-hidden #top-left-controls .close-sidebar-arrow-desktop,
+    body.sidebar-open #top-left-controls .open-sidebar-arrow,
+    body.sidebar-hidden #top-left-controls .open-sidebar-arrow {
+        display: none;
+    }
+
+    #sidebar-menu .empty-account-checkbox-mobile {
+        display: inline-block;
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: scale(1.5);
+        z-index: 20;
+        margin: 0.5rem 0 0.5rem 1rem;
+        cursor: pointer;
+    }
+
+    #sidebar-menu label[for="hideEmptyAccountsMobile"] {
+        display: inline-block;
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        margin: 0.5rem 0 0.5rem 0.5rem;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+
+    body.sidebar-hidden .close-sidebar-arrow-mobile {
+        display: none;
+    }
+
+    body.sidebar-open .close-sidebar-arrow-mobile {
+        display: block;
+    }
+
+    body.sidebar-hidden .mobile-menu-btn {
+        display: block;
+        transform: scale(1.5);
+    }
+
+    body.sidebar-open .mobile-menu-btn {
+        display: none;
+    }
+}
+
+.transactionsreport .posting td {
+    border: none !important;
+}
+
+.transactionsreport {
+    table-layout: fixed;
+}
+
+.transactionsreport th.date, .transactionsreport td.date {
+    width: 100px;
+}
+
+.transactionsreport th.description, .transactionsreport td.description {
+    width: 200px;
+}
+
+.transactionsreport th.account, .transactionsreport td.account {
+    width: auto;
+}
+
+.mobile-account {
+    display: none;
+}
+
+.desktop-account {
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    .transactionsreport {
+        table-layout: fixed;
+    }
+
+    .transactionsreport th.date {
+        width: 25%;
+    }
+
+    .transactionsreport td.date {
+        width: 25%;
+    }
+
+    .transactionsreport th.description {
+        width: 50%;
+    }
+
+    .transactionsreport td.description {
+        width: 50%;
+    }
+
+    .transactionsreport th.account {
+        visibility: collapse;
+        width: 0;
+    }
+
+    .transactionsreport td.account {
+        visibility: collapse;
+        width: 0;
+    }
+
+    .transactionsreport th.amount {
+        text-align: right;
+        width: 25%;
+    }
+
+    .transactionsreport td.amount {
+        width: 25%;
+    }
+
+    .mobile-account {
+        display: block;
+        font-size: 0.8em;
+        margin-top: 2px;
+    }
+
+    .mobile-account a {
+        color: #337ab7;
+    }
+
+    .desktop-account {
+        display: none;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+}
+
+.negative {
+    color: #a94442;
+}
+
+.date {
+    white-space: nowrap;
+}
+
+.col-any-0 {
+    width:0 !important;
+    height:0 !important;
+    float: left;
+    opacity:0;
+}
+
+.tgl-icon {
+    font-size:large;
+}
+
+.bi {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+}
+
+/* Hide sidebar toggle button on larger screens */
+@media (min-width: 769px) {
+    .visible-xs {
+        display: none !important;
+    }
+}
+
+
+.modal-header .btn-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+/* Resizable sidebar container - flexbox layout for independent scrolling */
+.page-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.page-container > #main-content {
+    flex: 1 1 auto;
+    align-self: auto;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+/* Resize handle */
+.resize-handle--x {
+    flex: 0 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    width: 4px;
+    height: 100%;
+    background-color: #ddd;
+    cursor: col-resize;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    transition: background-color 0.2s;
+}
+
+.resize-handle--x:hover {
+    background-color: #999;
+}
+
+@media screen and (max-width: 768px) {
+    .row-offcanvas {
+        position: relative;
+        transition: all .25s ease-out;
+    }
+
+    .row-offcanvas-right {
+        right: 0;
+    }
+
+    .row-offcanvas-left {
+        left: 0;
+    }
+
+    .row-offcanvas-right
+    .sidebar-offcanvas {
+        right: -90%;
+    }
+
+    .row-offcanvas-left
+    .sidebar-offcanvas {
+        left: -90%;
+    }
+
+    .row-offcanvas-right.active {
+        right: 90%;
+    }
+
+    .row-offcanvas-left.active {
+        left: 90%;
+    }
+
+    .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 90%;
+    }
+    
+    /* Mobile sidebar - ensure it's a single panel */
+    #sidebar-menu.sidebar-offcanvas {
+        position: fixed !important;
+        top: 0 !important;
+        left: -90% !important;
+        width: 90% !important;
+        height: 100vh !important;
+        z-index: 40 !important;
+        transition: left 0.3s ease-out !important;
+        background: white !important;
+        overflow-y: auto !important;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1) !important;
+        margin-top: 0 !important;
+    }
+    
+    #sidebar-menu.sidebar-offcanvas.active {
+        left: 0 !important;
+    }
+
+    #sidebar-menu .main-menu td {
+        max-width: 200px;
+    }
+    
+    /* Hide resize handle on mobile */
+    .resize-handle--x {
+        display: none;
+    }
+}
