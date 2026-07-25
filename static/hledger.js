@@ -182,7 +182,8 @@ function hledgerInitPage() {
       var acctLink = row.querySelector('.acct-name');
       if (acctLink) {
         e.preventDefault();
-        window.location.href = acctLink.href;
+        // For static website, redirect to register.html
+        window.location.href = 'register.html';
       }
     });
 
@@ -319,7 +320,8 @@ function hledgerInitAjaxNavigation() {
     var link = ev.target.closest('#sidebar-menu a[href], #main-content a[href]');
     if (link && hledgerAjaxCanHandleLink(link, ev)) {
       ev.preventDefault();
-      hledgerAjaxNavigate(link.href, true);
+      // For static website, redirect to register.html instead of AJAX navigation
+      window.location.href = 'register.html';
     }
   });
 
