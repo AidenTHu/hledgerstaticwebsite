@@ -31,7 +31,7 @@ function hledgerInitGlobal() {
       e.preventDefault();
     }
     if (e.key === 'j' && !e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
-      location.href = document.hledgerWebBaseurl+'/journal';
+      location.href = 'register.html';
       e.preventDefault();
     }
     if (e.key === 's' && !e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
@@ -54,6 +54,21 @@ function hledgerInitGlobal() {
       var searchInput = document.querySelector('#searchform input');
       if (searchInput) searchInput.focus();
       e.preventDefault();
+    }
+  });
+
+  // Tap outside sidebar to close on mobile
+  document.addEventListener('click', function(e) {
+    if (isMobile()) {
+      var sidebar = document.getElementById('sidebar-menu');
+      var mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      
+      if (sidebar && sidebar.classList.contains('active')) {
+        // Check if click is outside sidebar and not on the mobile menu button
+        if (!sidebar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+          sidebarToggle();
+        }
+      }
     }
   });
 
@@ -168,32 +183,33 @@ function hledgerInitPage() {
       }
     });
 
-    // Color-code account names by type (only top-level accounts)
-    var acctLink = row.querySelector('.acct-name');
-    if (acctLink) {
-      var acctName = acctLink.getAttribute('data-account-name');
-      if (acctName) {
-        acctName = acctName.toLowerCase();
-        // Only color top-level accounts (no colons, or exact match)
-        var parts = acctName.split(':');
+  });
+
+  // Detect top-level accounts that have sub-accounts and add class
+  var allAccountLinks = document.querySelectorAll('#sidebar-menu .main-menu .acct-name');
+  var topLevelAccounts = {};
+  
+  // First, collect all top-level account names
+  allAccountLinks.forEach(function(link) {
+    var acctName = link.getAttribute('data-account-name');
+    if (acctName) {
+      var parts = acctName.split(':');
+      if (parts.length === 1) {
+        topLevelAccounts[acctName] = false; // no sub-accounts
+      } else {
         var topLevel = parts[0];
-        if (parts.length === 1) {
-          if (topLevel === 'assets') {
-            acctLink.style.color = '#006400'; // dark green
-          } else if (topLevel === 'liabilities') {
-            acctLink.style.color = '#0000FF'; // hyperlink blue
-          } else if (topLevel === 'equity') {
-            acctLink.style.color = '#800080'; // purple
-          } else if (topLevel === 'income') {
-            acctLink.style.color = '#8B4500'; // dark orange
-          } else if (topLevel === 'expenses') {
-            acctLink.style.color = '#FF0000'; // red
-          } else {
-            // Legible blue for miscellaneous accounts
-            acctLink.style.color = '#1E90FF'; // dodger blue
-          }
+        if (topLevelAccounts.hasOwnProperty(topLevel)) {
+          topLevelAccounts[topLevel] = true; // has sub-accounts
         }
       }
+    }
+  });
+  
+  // Add class to top-level accounts that have sub-accounts
+  allAccountLinks.forEach(function(link) {
+    var acctName = link.getAttribute('data-account-name');
+    if (acctName && topLevelAccounts.hasOwnProperty(acctName) && topLevelAccounts[acctName]) {
+      link.classList.add('top-level-with-subs');
     }
   });
 
@@ -292,21 +308,8 @@ function hledgerInitPage() {
 }
 
 function hledgerInitAjaxNavigation() {
-  if (!window.history || !window.history.pushState || !window.DOMParser || !window.URL || !window.location.origin) {
-    return;
-  }
-
-  document.addEventListener('click', function(ev) {
-    var link = ev.target.closest('#sidebar-menu a[href], #main-content a[href]');
-    if (link && hledgerAjaxCanHandleLink(link, ev)) {
-      ev.preventDefault();
-      hledgerAjaxNavigate(link.href, true);
-    }
-  });
-
-  window.addEventListener('popstate', function() {
-    hledgerAjaxNavigate(window.location.href, false);
-  });
+  // Disable AJAX navigation for static site - no server to fetch from
+  return;
 }
 
 function hledgerAjaxCanHandleLink(link, ev) {
