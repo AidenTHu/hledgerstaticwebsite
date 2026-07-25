@@ -31,7 +31,7 @@ function hledgerInitGlobal() {
       e.preventDefault();
     }
     if (e.key === 'j' && !e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
-      location.href = 'index.html';
+      location.href = 'journal.html';
       e.preventDefault();
     }
     if (e.key === 's' && !e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
