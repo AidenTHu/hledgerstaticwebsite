@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hledger-web Demo Page</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="static/hledger.css">
+</head>
+<body>
+    <div class="container" style="padding-top: 2rem;">
+        <h1>hledger-web Demo Page</h1>
+        <div class="alert alert-info">
+            <strong>Demo Mode:</strong> This is a static demo page. In the actual hledger-web application, clicking sidebar or transaction links would navigate to different pages showing filtered data.
+        </div>
+        
+        <h2>What would happen in the real application:</h2>
+        <ul>
+            <li><strong>Sidebar account links:</strong> Would show a register view filtered to that account</li>
+            <li><strong>Transaction links:</strong> Would show detailed transaction information</li>
+            <li><strong>Journal link:</strong> Would show the general journal with all transactions</li>
+            <li><strong>Search functionality:</strong> Would filter transactions based on search patterns</li>
+        </ul>
+        
+        <div class="alert alert-warning">
+            <strong>Note:</strong> Server-side features are not available in this static demo. This is only for testing CSS and JavaScript functionality.
+        </div>
+        
+        <button class="btn btn-default" onclick="window.location.href='index.html'">
+            <span class="bi bi-arrow-left" aria-hidden="true"></span> Back to Main Page
+        </button>
+    </div>
+    
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
