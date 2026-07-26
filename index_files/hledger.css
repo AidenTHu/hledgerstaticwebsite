@@ -456,6 +456,10 @@ body.sidebar-hidden .title-row .home-btn {
     z-index: 20;
 }
 
+#hideEmptyAccountsDesktop:hover, #top-left-controls label[for="hideEmptyAccountsDesktop"]:hover {
+    cursor: pointer;
+}
+
 #sidebar-menu .empty-account-checkbox-mobile {
     display: none;
     position: relative;
