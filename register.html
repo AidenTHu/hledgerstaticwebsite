@@ -22,7 +22,7 @@ Keyboard shortcut: e">Show empty accounts</label>
 Keyboard shortcut: e">
 <label for="hideEmptyAccountsMobile" title="Show empty accounts
 Keyboard shortcut: e">Show empty accounts</label>
-<table class="main-menu table"><tbody><tr style="cursor: pointer;"><td class="top acct"><a href="journal.html" title="Show general journal entries, most recent first">Journal</a>
+<table class="main-menu table"><tbody><tr style="cursor: pointer;"><td class="top acct"><a href="journal" title="Show general journal entries, most recent first">Journal</a>
 </td>
 <td class="top"></td>
 </tr>
@@ -228,10 +228,10 @@ Keyboard shortcut: e">Show empty accounts</label>
 </tbody></table>
 </nav>
 <div class="resize-handle--x" id="sidebar-resize-handle" data-target="#sidebar-menu"></div>
-<main class="col-xs-12 col-md-8 col-sm-8" id="main-content"><header class="sticky-header"><div class="header-flex"><div class="title-row"><button class="btn btn-default home-btn" type="button" onclick="location.href = 'journal.html'" title="Go to the General journal
+<main class="col-xs-12 col-md-8 col-sm-8" id="main-content"><header class="sticky-header"><div class="header-flex"><div class="title-row"><button class="btn btn-default home-btn" type="button" onclick="location.href = document.hledgerWebBaseurl+&#39;/journal&#39;" title="Go to the General journal
 Keyboard shortcut: j" aria-label="Go to Journal"><span class="bi bi-house" aria-hidden="true"></span>
 </button>
-<h1 class="d-flex align-items-center"><a href="register?q=inacct%3AAssets%20#" onclick="location.href = 'journal.html'; return false;" title="Go to the General journal
+<h1 class="d-flex align-items-center"><a href="register?q=inacct%3AAssets%20#" onclick="location.href = document.hledgerWebBaseurl+&#39;/journal&#39;; return false;" title="Go to the General journal
 Keyboard shortcut: j">.hledger.journal</a>
 </h1>
 </div>
@@ -243,7 +243,8 @@ Keyboard shortcut: j">.hledger.journal</a>
 <button class="btn btn-default" type="button" onclick="addformShow()" title="Add a transaction
 Keyboard shortcut: a" aria-label="Add Transaction"><span class="bi bi-plus-square" aria-hidden="true"></span>
 </button>
-<button class="btn btn-default" type="button" data-bs-toggle="modal" data-bs-target="#helpmodal" title="Show search and general help" aria-label="Show Help"><span class="bi bi-question-circle" aria-hidden="true"></span>
+<button class="btn btn-default" type="button" data-bs-toggle="modal" data-bs-target="#helpmodal" title="Show search and general help
+Keyboard shortcut: h" aria-label="Show Help"><span class="bi bi-question-circle" aria-hidden="true"></span>
 </button>
 </div>
 </form>
@@ -387,7 +388,7 @@ behavior: 'smooth'});}}}}}});} catch (error) {}})();</script>
     Assets:Accounts Receivable                  -800.00 USD
     Income:Sales                                 800.00 USD
 
-" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal.html?q#transaction-1-6">2012-03-28</a>
+" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal?q#transaction-1-6">2012-03-28</a>
 </td>
 <td>Sarah Jane</td>
 <td class="account"><a href="register?q=inacct%3AIncome%3ASales%20#6" title="Income:Sales">In:Sales</a>
@@ -400,7 +401,7 @@ behavior: 'smooth'});}}}}}});} catch (error) {}})();</script>
     Income:Consulting Revenue                   4400.00 USD
     Income:Rental Revenue                       2400.00 USD
 
-" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal.html?q#transaction-1-5">2012-02-06</a>
+" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal?q#transaction-1-5">2012-02-06</a>
 </td>
 <td>John Doe Enterprises</td>
 <td class="account"><a href="register?q=inacct%3A%22Income%3AConsulting%20Revenue%22%20#5" title="Income:Consulting Revenue">In:Consulting Revenue</a>, 
@@ -413,7 +414,7 @@ behavior: 'smooth'});}}}}}});} catch (error) {}})();</script>
     Assets:US:BofA:Checking                    -2400.00 USD
     Expenses:Home:Rent                          2400.00 USD
 
-" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal.html?q#transaction-1-4">2012-01-06</a>
+" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal?q#transaction-1-4">2012-01-06</a>
 </td>
 <td>RiverBank Properties | Payin..</td>
 <td class="account"><a href="register?q=inacct%3AExpenses%3AHome%3ARent%20#4" title="Expenses:Home:Rent">Ex:Ho:Rent</a>
@@ -425,7 +426,7 @@ behavior: 'smooth'});}}}}}});} catch (error) {}})();</script>
     Assets:US:BofA:Checking                       -4.00 USD
     Expenses:Financial:Fees                        4.00 USD
 
-" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal.html?q#transaction-1-3">2012-01-04</a>
+" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal?q#transaction-1-3">2012-01-04</a>
 </td>
 <td>BANK FEES | Monthly bank fee</td>
 <td class="account"><a href="register?q=inacct%3AExpenses%3AFinancial%3AFees%20#3" title="Expenses:Financial:Fees">Ex:Fi:Fees</a>
@@ -437,7 +438,7 @@ behavior: 'smooth'});}}}}}});} catch (error) {}})();</script>
     Assets:US:BofA:Checking                     3077.70 USD
     Equity:Opening-Balances                    -3077.70 USD
 
-" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal.html?q#transaction-1-2">2012-01-01</a>
+" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal?q#transaction-1-2">2012-01-01</a>
 </td>
 <td>Opening Balance for checking..</td>
 <td class="account"><a href="register?q=inacct%3AEquity%3AOpening-Balances%20#2" title="Equity:Opening-Balances">Eq:Opening-Balances</a>
@@ -457,7 +458,7 @@ behavior: 'smooth'});}}}}}});} catch (error) {}})();</script>
     Liabilities:Shareholder loan               60000.00 USD
     Equity:Owner&#39;s equity                     -60000.00 USD
 
-" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal.html?q#transaction-1-1">2012-01-01</a>
+" style="vertical-align:top;"><td class="date" nowrap=""><a href="journal?q#transaction-1-1">2012-01-01</a>
 </td>
 <td>Opening Balances for checkin..</td>
 <td class="account"><a href="register?q=inacct%3A%22Liabilities%3APromissory%20Notes%22%20#1" title="Liabilities:Promissory Notes">Li:Promissory Notes</a>, 
@@ -482,7 +483,7 @@ const arr = new Uint8Array(unb64.length);
 for (let i = 0; i < arr.length; i++) {arr[i] = unb64.charCodeAt(i);}
 return window.utf8textdecoder.decode(arr);}</script>
 <input type="hidden" name="_formid" value="identify-add">
-<input type="hidden" name="_token" value="RFzl74IIG4zaZEr8xeBfwUHxsQRSKOqAjLwaXSYZ">
+<input type="hidden" name="_token" value="iP563bRr213sRIbJzIteOTPIhnjmN4fimxUSGi8e">
 
 <div class="row"><div class="col-md-3 col-sm-5 col-xs-6 "><div class="form-group input-group date" id="dateWrap"><input id="hident2" name="date" type="date" required="" value="" class="form-control input-lg" placeholder="Date">
 <div class="input-group-text"><span class="bi bi-calendar" aria-hidden="true"></span>

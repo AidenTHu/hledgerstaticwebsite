@@ -31,7 +31,7 @@ function hledgerInitGlobal() {
       e.preventDefault();
     }
     if (e.key === 'j' && !e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
-      location.href = 'journal.html';
+      location.href = document.hledgerWebBaseurl+'/journal';
       e.preventDefault();
     }
     if (e.key === 's' && !e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
@@ -182,8 +182,7 @@ function hledgerInitPage() {
       var acctLink = row.querySelector('.acct-name');
       if (acctLink) {
         e.preventDefault();
-        // For static website, use clean URL that will be handled by 404.html
-        window.location.href = 'register' + window.location.search;
+        window.location.href = acctLink.href;
       }
     });
 
@@ -320,17 +319,7 @@ function hledgerInitAjaxNavigation() {
     var link = ev.target.closest('#sidebar-menu a[href], #main-content a[href]');
     if (link && hledgerAjaxCanHandleLink(link, ev)) {
       ev.preventDefault();
-      // For static website, use clean URL that will be handled by 404.html
-      var url = new URL(link.href, window.location.href);
-      var path = url.pathname.replace(/^\//, '');
-      // Map register pages to clean URL
-      if (path.includes('register')) {
-        window.location.href = 'register' + url.search + url.hash;
-      } else if (path.includes('journal')) {
-        window.location.href = 'journal' + url.search + url.hash;
-      } else {
-        window.location.href = link.href;
-      }
+      hledgerAjaxNavigate(link.href, true);
     }
   });
 
